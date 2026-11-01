@@ -1,0 +1,274 @@
+[
+  {
+    "id": "full_stack_developer",
+    "title": "Full Stack Developer",
+    "category": "Software Engineering",
+    "experience_level": "Entry to Mid",
+    "description": "Seeking an agile Full Stack Developer skilled in building end-to-end web applications. Must be proficient in front-end frameworks like React or Angular, server-side technologies such as Node.js, Python, or Java, RESTful API design, database modeling with SQL and MongoDB, and version control using Git. Experience with Docker, CI/CD, and AWS deployment is a plus.",
+    "required_skills": [
+      "javascript",
+      "react",
+      "node.js",
+      "python",
+      "html5",
+      "css3",
+      "sql",
+      "git",
+      "rest api",
+      "mongodb"
+    ],
+    "recommended_skills": [
+      "typescript",
+      "docker",
+      "aws",
+      "ci/cd",
+      "graphql",
+      "redis"
+    ]
+  },
+  {
+    "id": "frontend_developer",
+    "title": "Frontend Developer",
+    "category": "Web Development",
+    "experience_level": "Entry to Mid",
+    "description": "Looking for a creative and detail-oriented Frontend Developer to construct high-performance, responsive web interfaces. Requires strong proficiency in modern JavaScript (ES6+), TypeScript, React.js, HTML5, CSS3, Tailwind CSS, component-based architectures, state management (Redux, Zustand), and Webpack/Vite. Familiarity with accessibility standards (WCAG) and browser performance optimization.",
+    "required_skills": [
+      "javascript",
+      "typescript",
+      "react",
+      "html5",
+      "css3",
+      "tailwind css",
+      "redux",
+      "git",
+      "responsive design",
+      "webpack"
+    ],
+    "recommended_skills": [
+      "next.js",
+      "vue.js",
+      "graphql",
+      "jest",
+      "figma",
+      "sass"
+    ]
+  },
+  {
+    "id": "backend_developer",
+    "title": "Backend Developer",
+    "category": "Backend Engineering",
+    "experience_level": "Mid Level",
+    "description": "We are looking for an experienced Backend Developer to design, build, and maintain scalable microservices, REST APIs, and background job processing pipelines. Must have deep expertise in Python (Django/FastAPI/Flask) or Node.js/Go, relational databases (PostgreSQL, MySQL), caching systems (Redis), message queues (RabbitMQ, Kafka), containerization with Docker, and automated unit testing.",
+    "required_skills": [
+      "python",
+      "fastapi",
+      "flask",
+      "postgresql",
+      "mysql",
+      "rest api",
+      "docker",
+      "redis",
+      "git",
+      "microservices"
+    ],
+    "recommended_skills": [
+      "django",
+      "kafka",
+      "kubernetes",
+      "aws",
+      "graphql",
+      "linux"
+    ]
+  },
+  {
+    "id": "ml_engineer",
+    "title": "Machine Learning Engineer",
+    "category": "Artificial Intelligence",
+    "experience_level": "Mid Level",
+    "description": "Hiring a Machine Learning Engineer to develop, train, optimize, and deploy machine learning and deep learning models into production systems. Strong foundations in Python, Scikit-learn, TensorFlow, PyTorch, natural language processing (NLP), computer vision, feature engineering, MLflow, model serving via FastAPI, and cloud deployment (AWS/GCP).",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "deep learning",
+      "scikit-learn",
+      "tensorflow",
+      "pytorch",
+      "nlp",
+      "pandas",
+      "numpy",
+      "docker"
+    ],
+    "recommended_skills": [
+      "mlflow",
+      "opencv",
+      "fastapi",
+      "aws",
+      "spacy",
+      "hugging face",
+      "transformers"
+    ]
+  },
+  {
+    "id": "data_scientist",
+    "title": "Data Scientist",
+    "category": "Data & Analytics",
+    "experience_level": "Entry to Mid",
+    "description": "Seeking an analytical Data Scientist to derive actionable business insights and predictive intelligence from complex datasets. Must possess strong statistical analysis, data cleaning, exploratory data analysis (EDA), hypothesis testing, predictive modeling, machine learning, and visualization skills using Python, R, Pandas, NumPy, Matplotlib, Seaborn, SQL, and PowerBI or Tableau.",
+    "required_skills": [
+      "python",
+      "sql",
+      "pandas",
+      "numpy",
+      "machine learning",
+      "data analysis",
+      "statistics",
+      "matplotlib",
+      "seaborn",
+      "scikit-learn"
+    ],
+    "recommended_skills": [
+      "tableau",
+      "powerbi",
+      "r",
+      "jupyter",
+      "bigquery",
+      "deep learning"
+    ]
+  },
+  {
+    "id": "devops_engineer",
+    "title": "DevOps & Cloud Engineer",
+    "category": "Infrastructure & Operations",
+    "experience_level": "Mid to Senior",
+    "description": "Looking for a DevOps Engineer to automate build, deployment, monitoring, and infrastructure provisioning pipelines. Key proficiencies include Docker containerization, Kubernetes orchestration, CI/CD automation (GitHub Actions, Jenkins), Infrastructure as Code (Terraform), Cloud computing (AWS or Azure), Linux system administration, and observability tools (Prometheus, Grafana).",
+    "required_skills": [
+      "docker",
+      "kubernetes",
+      "aws",
+      "ci/cd",
+      "terraform",
+      "linux",
+      "git",
+      "jenkins",
+      "bash",
+      "python"
+    ],
+    "recommended_skills": [
+      "azure",
+      "ansible",
+      "prometheus",
+      "grafana",
+      "helm",
+      "github actions"
+    ]
+  },
+  {
+    "id": "mobile_developer",
+    "title": "Mobile Application Developer",
+    "category": "Mobile Engineering",
+    "experience_level": "Entry to Mid",
+    "description": "Seeking a talented Mobile Application Developer to build performant, user-centric mobile apps for iOS and Android. Requires hands-on experience in Flutter (Dart) or React Native, native API integrations, mobile state management, REST API integration, offline storage (SQLite, Realm), push notifications, and App Store / Google Play publishing workflows.",
+    "required_skills": [
+      "flutter",
+      "dart",
+      "react native",
+      "javascript",
+      "mobile development",
+      "rest api",
+      "git",
+      "sqlite",
+      "ios",
+      "android"
+    ],
+    "recommended_skills": [
+      "swift",
+      "kotlin",
+      "firebase",
+      "redux",
+      "graphql",
+      "ui/ux design"
+    ]
+  },
+  {
+    "id": "data_engineer",
+    "title": "Data Engineer",
+    "category": "Data Architecture",
+    "experience_level": "Mid Level",
+    "description": "Hiring a Data Engineer to design, construct, test, and maintain resilient big data architectures and ETL/ELT data pipelines. Must have solid skills in Python, SQL, Apache Spark, distributed computing, workflow orchestration with Apache Airflow, data warehousing (Snowflake, BigQuery, Redshift), database optimization, and Kafka streaming.",
+    "required_skills": [
+      "python",
+      "sql",
+      "apache spark",
+      "etl",
+      "airflow",
+      "data warehousing",
+      "postgresql",
+      "bigquery",
+      "docker",
+      "git"
+    ],
+    "recommended_skills": [
+      "kafka",
+      "snowflake",
+      "aws",
+      "hadoop",
+      "scala",
+      "dbt"
+    ]
+  },
+  {
+    "id": "cybersecurity_engineer",
+    "title": "Cybersecurity Engineer",
+    "category": "Information Security",
+    "experience_level": "Mid Level",
+    "description": "Seeking a dedicated Cybersecurity Engineer to evaluate system vulnerabilities, secure network infrastructures, and implement robust security policies. Proficiencies required in penetration testing, vulnerability assessment, network security protocols, SIEM tools, firewall configurations, identity and access management (IAM), ethical hacking, and Python or Bash scripting.",
+    "required_skills": [
+      "network security",
+      "cybersecurity",
+      "penetration testing",
+      "vulnerability assessment",
+      "linux",
+      "python",
+      "wireshark",
+      "siem",
+      "firewall",
+      "cryptography"
+    ],
+    "recommended_skills": [
+      "metasploit",
+      "burp suite",
+      "owasp",
+      "iam",
+      "bash",
+      "cloud security"
+    ]
+  },
+  {
+    "id": "qa_automation_engineer",
+    "title": "QA & Automation Test Engineer",
+    "category": "Quality Assurance",
+    "experience_level": "Entry to Mid",
+    "description": "Looking for a QA Automation Engineer to design, develop, and execute automated test suites for web and mobile applications. Experience required in test automation frameworks (Selenium, Cypress, Playwright), API testing (Postman, RestAssured), unit/integration testing (PyTest, JUnit), defect tracking (Jira), continuous integration, and performance testing.",
+    "required_skills": [
+      "selenium",
+      "pytest",
+      "python",
+      "javascript",
+      "api testing",
+      "postman",
+      "automation testing",
+      "git",
+      "jira",
+      "ci/cd"
+    ],
+    "recommended_skills": [
+      "cypress",
+      "playwright",
+      "jmeter",
+      "cucumber",
+      "docker",
+      "sql"
+    ]
+  }
+]
+

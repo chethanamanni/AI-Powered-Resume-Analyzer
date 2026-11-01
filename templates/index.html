@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Analyzer & Skill Gap Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>[x-cloak] { display: none !important; }</style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="glow-orb glow-top-left"></div>
+  <div class="glow-orb glow-bottom-right"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="logo-group">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h1 class="brand-title">AI Resume Analyzer</h1>
+            <p class="brand-subtitle">Intelligent Job Recommendation & Skill Gap Analysis</p>
+          </div>
+        </div>
+        <div class="tech-stack-pills">
+          <span class="tech-pill">Flask</span>
+          <span class="tech-pill">SQLite ({{ job_count }} Jobs)</span>
+          <span class="tech-pill">SpaCy NLP</span>
+          <span class="tech-pill">TF-IDF Vectorizer</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Upload Card -->
+      <section class="card upload-card">
+        <div class="card-header">
+          <div class="step-badge">1</div>
+          <div>
+            <h2 class="card-title">Upload Candidate Resume</h2>
+            <p class="card-desc">Select a PDF resume to extract skills, calculate ATS score, and identify gap areas.</p>
+          </div>
+        </div>
+
+        <form id="resume-upload-form" class="upload-form">
+          <!-- Drag & Drop Zone -->
+          <div class="drop-zone" id="drop-zone">
+            <div class="drop-zone-icon">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+            </div>
+            <p class="drop-zone-text"><strong>Click to browse</strong> or drag & drop your resume PDF</p>
+            <p class="drop-zone-sub">Supported format: PDF (Max 16MB)</p>
+            <input type="file" id="resume-file" name="resume" accept=".pdf" class="file-input">
+            
+            <div id="file-info" class="file-info hidden">
+              <div class="file-info-details">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                <span id="file-name" class="file-name">filename.pdf</span>
+                <span id="file-size" class="file-size">(0 KB)</span>
+              </div>
+              <button type="button" id="remove-file-btn" class="btn-icon" title="Remove file">&times;</button>
+            </div>
+          </div>
+
+          <!-- Configuration Controls -->
+          <div class="config-grid">
+            <div class="form-group">
+              <label for="target-role-select" class="form-label">Evaluation Target Role</label>
+              <div
+                x-data="{ query: '', selectedLabel: 'Search standard job roles...' }"
+                class="relative mb-3 w-full"
+              >
+                <label for="job-role-search" class="sr-only">Search job roles</label>
+                <div class="relative">
+                  <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+                  <input
+                    id="job-role-search"
+                    type="search"
+                    x-model="query"
+                    placeholder="Search standard job roles..."
+                    autocomplete="off"
+                    class="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm text-slate-800 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                  >
+                </div>
+                <div
+                  x-show="query.length > 0"
+                  x-cloak
+                  class="absolute z-20 mt-1 max-h-56 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white p-1 shadow-xl"
+                >
+                  {% for role in standard_roles %}
+                    <button
+                      type="button"
+                      data-role-value="catalog:{{ role.id }}"
+                      data-role-label="{{ role.title }} • {{ role.department }}"
+                      data-role-search="{{ (role.title ~ ' ' ~ role.department)|lower }}"
+                      x-show="!query || $el.dataset.roleSearch.includes(query.toLowerCase())"
+                      x-on:click="document.getElementById('target-role-select').value = $el.dataset.roleValue; document.getElementById('target-role-select').dispatchEvent(new Event('change', { bubbles: true })); selectedLabel = $el.dataset.roleLabel; query = ''"
+                      class="block w-full rounded-md px-3 py-2 text-left text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-700"
+                    >
+                      {{ role.title }} <span class="text-slate-400">• {{ role.department }}</span>
+                    </button>
+                  {% endfor %}
+                  {% for job in jobs %}
+                    <button
+                      type="button"
+                      data-role-value="{{ job.id }}"
+                      data-role-label="{{ job.title }} • {{ job.company }}"
+                      data-role-search="{{ (job.title ~ ' ' ~ job.company ~ ' ' ~ job.location)|lower }}"
+                      x-show="!query || $el.dataset.roleSearch.includes(query.toLowerCase())"
+                      x-on:click="document.getElementById('target-role-select').value = $el.dataset.roleValue; document.getElementById('target-role-select').dispatchEvent(new Event('change', { bubbles: true })); selectedLabel = $el.dataset.roleLabel; query = ''"
+                      class="block w-full rounded-md px-3 py-2 text-left text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-700"
+                    >
+                      {{ job.title }} <span class="text-slate-400">• {{ job.company }}</span>
+                    </button>
+                  {% endfor %}
+                </div>
+                <p x-show="selectedLabel !== 'Search standard job roles...'" x-text="'Selected: ' + selectedLabel" class="mt-1 text-xs text-slate-500"></p>
+              </div>
+              <select id="target-role-select" name="target_role" class="form-control">
+                <option value="all">⚡ Auto-Recommend Best Fit (Scan All {{ job_count }} Live Database Roles)</option>
+                <optgroup label="Live Database Job Postings ({{ job_count }} Open Roles)">
+                  {% for job in jobs %}
+                    <option value="{{ job.id }}">{{ job.title }} &bull; {{ job.company }} ({{ job.location }}{% if job.salary_lpa %} - {{ job.salary_lpa }}{% endif %})</option>
+                  {% endfor %}
+                </optgroup>
+                <optgroup label="Standard Job Specifications">
+                  {% for role in standard_roles %}
+                    <option value="catalog:{{ role.id }}">{{ role.title }} &bull; {{ role.department }}</option>
+                  {% endfor %}
+                </optgroup>
+                <option value="custom">✍ Custom Job Description...</option>
+              </select>
+            </div>
+
+            <div class="form-group action-group">
+              <button type="submit" id="analyze-btn" class="btn btn-primary" disabled>
+                <span class="btn-spinner hidden" id="spinner"></span>
+                <span id="btn-text">Analyze Resume & Detect Gaps</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Job Description Collapsible Input -->
+          <div id="custom-job-container" class="custom-job-container hidden">
+            <div class="form-group">
+              <label for="custom-job-title" class="form-label">Custom Job Title</label>
+              <input type="text" id="custom-job-title" name="custom_title" placeholder="e.g. Senior AI Systems Engineer" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="custom-job-desc" class="form-label">Job Description & Requirements</label>
+              <textarea id="custom-job-desc" name="custom_description" rows="4" placeholder="Paste the job description or required skills here..." class="form-control"></textarea>
+            </div>
+          </div>
+        </form>
+
+        <!-- Notification Banner -->
+        <div id="alert-banner" class="alert-banner hidden"></div>
+      </section>
+
+      <!-- Dashboard Results Section (Populated dynamically) -->
+      <section id="results-section" class="results-section hidden">
+        <!-- Candidate Profile Overview -->
+        <div class="card candidate-card">
+          <div class="candidate-header">
+            <div class="candidate-avatar" id="candidate-avatar">CN</div>
+            <div class="candidate-meta">
+              <div class="candidate-title-row">
+                <h2 id="candidate-name" class="candidate-name">Candidate Name</h2>
+                <span id="skills-count-pill" class="badge badge-accent">0 Skills Detected</span>
+              </div>
+              <div class="candidate-contact-row">
+                <span class="contact-item" id="contact-email">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span class="text">email@example.com</span>
+                </span>
+                <span class="contact-item" id="contact-phone">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span class="text">+1 234 567 890</span>
+                </span>
+                <span class="contact-item hidden" id="contact-linkedin">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                </span>
+                <span class="contact-item hidden" id="contact-github">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <a href="#" target="_blank" rel="noopener">GitHub</a>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Section -->
+          <div class="candidate-education-box" id="education-box">
+            <h4 class="section-subtitle">Education & Credentials</h4>
+            <ul class="education-list" id="education-list">
+              <li>No degree details detected.</li>
+            </ul>
+          </div>
+
+          <!-- Candidate Extracted Skills -->
+          <div class="candidate-skills-box">
+            <h4 class="section-subtitle">Candidate Extracted Skills</h4>
+            <div class="skills-cloud" id="candidate-skills-cloud">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Target Role Evaluation & Skill Gap Studio -->
+        <div class="analysis-grid">
+          <!-- ATS Score Gauge Card -->
+          <div class="card ats-score-card">
+            <h3 class="card-subhead">ATS Match Evaluation</h3>
+            <div class="target-role-badge" id="target-role-label">Target Role</div>
+
+            <!-- Radial Gauge -->
+            <div class="gauge-wrapper">
+              <svg class="radial-gauge" viewBox="0 0 160 160">
+                <defs>
+                  <linearGradient id="gauge-gradient-low" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ef4444"></stop>
+                    <stop offset="100%" stop-color="#fb7185"></stop>
+                  </linearGradient>
+                  <linearGradient id="gauge-gradient-medium" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f59e0b"></stop>
+                    <stop offset="100%" stop-color="#fcd34d"></stop>
+                  </linearGradient>
+                  <linearGradient id="gauge-gradient-high" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#10b981"></stop>
+                    <stop offset="100%" stop-color="#6ee7b7"></stop>
+                  </linearGradient>
+                </defs>
+                <circle class="gauge-bg" cx="80" cy="80" r="65"></circle>
+                <circle class="gauge-fill" id="gauge-fill-circle" cx="80" cy="80" r="65"></circle>
+              </svg>
+              <div class="gauge-inner">
+                <span class="gauge-value" id="ats-score-num">0</span>
+                <span class="gauge-unit">/ 100</span>
+                <span class="gauge-label" id="ats-rating-label">Calculating</span>
+              </div>
+            </div>
+
+            <!-- Metric Breakdown -->
+            <div class="metrics-row">
+              <div class="metric-item">
+                <span class="metric-val" id="metric-skill-coverage">0%</span>
+                <span class="metric-name">Skill Coverage</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-val" id="metric-tfidf">0%</span>
+                <span class="metric-name">Contextual TF-IDF</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Gap & Recommendations Card -->
+          <div class="card skill-gap-card">
+            <div class="gap-card-header">
+              <h3 class="card-subhead">Skill Gap Breakdown & Learning Path</h3>
+              <span class="coverage-pill" id="coverage-pill">0/0 Matched</span>
+            </div>
+
+            <!-- Matched Skills Container -->
+            <div class="gap-category">
+              <h4 class="gap-title text-success">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Matched Skills in Resume (<span id="matched-count">0</span>)
+              </h4>
+              <div class="skills-cloud" id="matched-skills-cloud">
+                <!-- Badges populated by JS -->
+              </div>
+            </div>
+
+            <!-- Missing Skills Container -->
+            <div class="gap-category">
+              <h4 class="gap-title text-danger">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                Missing Required Skills - Skill Gap (<span id="missing-count">0</span>)
+              </h4>
+              <div class="skills-cloud" id="missing-skills-cloud">
+                <!-- Badges populated by JS -->
+              </div>
+            </div>
+
+            <!-- Actionable Recommendations -->
+            <div class="gap-category">
+              <h4 class="gap-title text-info">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                AI Recommendations to Bridge the Gap
+              </h4>
+              <ul class="recommendation-list" id="recommendations-list">
+                <!-- List items populated by JS -->
+              </ul>
+            </div>
+
+            <div class="gap-category roadmap-category">
+              <h4 class="gap-title text-info">Chronological Learning Roadmap</h4>
+              <div id="learning-roadmap" class="learning-roadmap">
+                <!-- Roadmap populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Guidance & Downloadable Analysis -->
+        <div class="card career-guidance-card" id="career-guidance-card">
+          <div class="guidance-header">
+            <div>
+              <h2 class="card-title">AI Career Guidance & Analysis</h2>
+              <p class="card-desc">Role-specific actions and a visual path based on the selected skill gap.</p>
+            </div>
+            <button type="button" id="download-report-btn" class="btn btn-secondary">
+              Download Full Report
+            </button>
+          </div>
+          <div class="guidance-grid">
+            <div>
+              <h4 class="section-subtitle">Recommended improvements</h4>
+              <ul id="career-guidance-list" class="recommendation-list"></ul>
+            </div>
+            <div>
+              <h4 class="section-subtitle">Learning path</h4>
+              <div id="learning-flowchart" class="learning-flowchart" aria-label="Learning path flowchart"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intelligent Job Recommendations -->
+        <div class="card recommendations-card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Top 5 Unique Job Recommendations</h2>
+              <p class="card-desc">Highest-scoring distinct software engineering roles matched against candidate profile using TF-IDF &amp; Skill Ontologies.</p>
+            </div>
+          </div>
+
+          <div class="jobs-recommendation-grid" id="jobs-recommendations-grid">
+            <!-- Top 5 unique job cards dynamically rendered -->
+          </div>
+        </div>
+
+        <!-- Real-Time Live Job Vacancies (JSearch API / LinkedIn, Indeed, Glassdoor) -->
+        <div class="card live-jobs-card" id="live-jobs-card">
+          <div class="live-jobs-header">
+            <div>
+              <div class="live-badge-wrapper">
+                <span class="live-pulse-dot"></span>
+                <span class="badge badge-live">LIVE MARKET VACANCIES</span>
+                {% if use_mock_jobs %}
+                  <span class="badge badge-mock" title="USE_MOCK_JOBS=True protects your 200 free monthly RapidAPI requests">MOCK MODE ACTIVE (QUOTA PROTECTED)</span>
+                {% else %}
+                  <span class="badge badge-api" title="RapidAPI JSearch live network mode">RAPIDAPI LIVE NETWORK</span>
+                {% endif %}
+              </div>
+              <h2 class="card-title">Live Job Recommendations (LinkedIn &bull; Indeed &bull; Glassdoor)</h2>
+              <p class="card-desc">Real-time vacancies retrieved via JSearch API and matched against candidate resume skills using Scikit-learn TF-IDF &amp; Cosine Similarity.</p>
+            </div>
+            <div class="live-controls">
+              <input type="text" id="live-query-input" class="live-input" placeholder="Role / skill (e.g. Python Developer)...">
+              <input type="text" id="live-location-input" class="live-input live-input-sm" placeholder="Location..." value="Remote">
+              <button type="button" id="refresh-live-jobs-btn" class="btn btn-secondary btn-sm">
+                <span class="btn-spinner hidden" id="live-spinner"></span>
+                <span id="live-btn-text">Search Live Openings</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="live-jobs-grid" id="live-jobs-grid">
+            <div class="live-jobs-empty">
+              <p>Upload a resume to automatically match and stream real-time vacancies from LinkedIn, Indeed, and Glassdoor.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>AI-Powered Resume Analyzer with Intelligent Job Recommendation & Skill Gap Analysis &bull; Flask &bull; SpaCy &bull; Scikit-learn</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

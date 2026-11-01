@@ -1,0 +1,211 @@
+{
+  "evaluation_framework": {
+    "scoring_scale": {
+      "1": "Little or no evidence; below role expectations",
+      "2": "Basic exposure; needs significant support",
+      "3": "Meets expectations for the target level",
+      "4": "Strong evidence; frequently exceeds expectations",
+      "5": "Exceptional evidence; role-model performance"
+    },
+    "dimensions": [
+      {
+        "name": "Technical or functional capability",
+        "weight": 35,
+        "criteria": "Required skills, tools, methods, domain knowledge, and quality of delivered work"
+      },
+      {
+        "name": "Relevant experience and outcomes",
+        "weight": 25,
+        "criteria": "Scope, complexity, ownership, measurable impact, and progression"
+      },
+      {
+        "name": "Problem solving and execution",
+        "weight": 20,
+        "criteria": "Reasoning, prioritization, judgment, quality, and delivery discipline"
+      },
+      {
+        "name": "Communication and collaboration",
+        "weight": 10,
+        "criteria": "Clarity, stakeholder management, teamwork, and written communication"
+      },
+      {
+        "name": "Leadership and adaptability",
+        "weight": 10,
+        "criteria": "Influence, mentoring, ownership, learning speed, and response to change"
+      }
+    ],
+    "kpi_guidance": [
+      "Use role-specific KPIs as evidence prompts, not as automatic rejection rules.",
+      "Prefer quantified outcomes and scope over keyword counts.",
+      "Compare evidence with the selected seniority level.",
+      "Require human review before making a hiring decision."
+    ]
+  },
+  "roles": [
+    {
+      "id": "software-engineer",
+      "title": "Software Engineer",
+      "department": "Software Engineering",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Design, build, test, and maintain reliable software features",
+        "Translate product requirements into maintainable technical solutions",
+        "Review code, improve quality, and contribute to technical decisions",
+        "Monitor and resolve production issues with the team"
+      ],
+      "required_skills": ["Algorithms", "Data structures", "API design", "Testing", "Git", "Code review"],
+      "tech_stack": ["Python or Java or TypeScript", "SQL", "REST", "Docker", "CI/CD"],
+      "kpis": ["On-time delivery", "Defect rate", "Availability", "Code review quality", "Lead time for changes"]
+    },
+    {
+      "id": "data-analyst",
+      "title": "Data Analyst",
+      "department": "Data & AI",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Turn business questions into reliable analyses and dashboards",
+        "Clean, validate, and document data sources",
+        "Communicate insights and recommendations to stakeholders",
+        "Define and monitor business metrics"
+      ],
+      "required_skills": ["SQL", "Data visualization", "Statistics", "Requirements gathering", "Storytelling"],
+      "tech_stack": ["SQL", "Python or R", "Excel", "Tableau or Power BI", "dbt"],
+      "kpis": ["Analysis adoption", "Data accuracy", "Dashboard usage", "Time to insight", "Forecast or recommendation impact"]
+    },
+    {
+      "id": "machine-learning-engineer",
+      "title": "Machine Learning Engineer",
+      "department": "Data & AI",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Develop, evaluate, and deploy machine learning models",
+        "Build reproducible training and data pipelines",
+        "Monitor model quality, drift, latency, and cost",
+        "Partner with product and engineering teams to ship AI capabilities"
+      ],
+      "required_skills": ["Python", "Machine learning", "Statistics", "Feature engineering", "Model evaluation"],
+      "tech_stack": ["Python", "scikit-learn or PyTorch", "SQL", "MLflow", "Docker", "Cloud ML services"],
+      "kpis": ["Model quality", "Inference latency", "Pipeline reliability", "Model adoption", "Business lift"]
+    },
+    {
+      "id": "product-manager",
+      "title": "Product Manager",
+      "department": "Product Management",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Set product goals, strategy, and prioritized roadmaps",
+        "Understand customer needs through research and data",
+        "Align design, engineering, sales, and operations stakeholders",
+        "Measure outcomes and iterate on shipped products"
+      ],
+      "required_skills": ["Product discovery", "Prioritization", "Roadmapping", "Analytics", "Stakeholder management"],
+      "tech_stack": ["Jira or Linear", "Product analytics", "SQL basics", "Figma", "Confluence or Notion"],
+      "kpis": ["Adoption", "Retention", "Activation", "Revenue or cost impact", "Roadmap predictability"]
+    },
+    {
+      "id": "ux-ui-designer",
+      "title": "UX/UI Designer",
+      "department": "Design",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Research user needs and define information architecture",
+        "Create flows, wireframes, prototypes, and polished interfaces",
+        "Validate designs through usability testing and feedback",
+        "Maintain accessible and consistent design systems"
+      ],
+      "required_skills": ["User research", "Interaction design", "Prototyping", "Visual design", "Accessibility"],
+      "tech_stack": ["Figma", "FigJam", "Design systems", "Analytics tools", "Usability testing tools"],
+      "kpis": ["Task success rate", "Usability score", "Design adoption", "Conversion", "Accessibility compliance"]
+    },
+    {
+      "id": "devops-cloud-engineer",
+      "title": "DevOps / Cloud Engineer",
+      "department": "DevOps / Cloud",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Automate build, release, infrastructure, and operational workflows",
+        "Design secure, scalable, and cost-aware cloud environments",
+        "Improve observability, reliability, and incident response",
+        "Enable engineering teams through platforms and self-service tooling"
+      ],
+      "required_skills": ["Linux", "Networking", "Infrastructure as code", "CI/CD", "Observability", "Security"],
+      "tech_stack": ["AWS or Azure or GCP", "Terraform", "Kubernetes", "Docker", "GitHub Actions or Jenkins"],
+      "kpis": ["Deployment frequency", "Change failure rate", "Mean time to recovery", "Availability", "Cloud cost efficiency"]
+    },
+    {
+      "id": "digital-marketing-manager",
+      "title": "Digital Marketing Manager",
+      "department": "Marketing",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Plan and execute multi-channel acquisition campaigns",
+        "Own messaging, content calendars, and campaign experiments",
+        "Analyze funnel performance and optimize spend",
+        "Coordinate agencies, creative teams, and sales enablement"
+      ],
+      "required_skills": ["Campaign strategy", "SEO/SEM", "Content marketing", "Analytics", "A/B testing"],
+      "tech_stack": ["Google Analytics", "Google Ads", "HubSpot or Salesforce", "Meta Ads", "Email automation"],
+      "kpis": ["Qualified pipeline", "Customer acquisition cost", "Conversion rate", "Return on ad spend", "Organic traffic"]
+    },
+    {
+      "id": "account-executive",
+      "title": "Account Executive",
+      "department": "Sales",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Develop pipeline and qualify business opportunities",
+        "Run discovery, demonstrations, negotiations, and closing",
+        "Build trusted relationships with economic buyers and champions",
+        "Maintain accurate forecasts and CRM records"
+      ],
+      "required_skills": ["Consultative selling", "Discovery", "Negotiation", "Presentation", "Forecasting"],
+      "tech_stack": ["Salesforce or HubSpot", "Sales engagement tools", "Video conferencing", "CRM reporting"],
+      "kpis": ["Quota attainment", "Win rate", "Average deal size", "Sales cycle length", "Forecast accuracy"]
+    },
+    {
+      "id": "people-operations-specialist",
+      "title": "People Operations Specialist",
+      "department": "Human Resources",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Administer employee lifecycle processes and HR programs",
+        "Support policy, compliance, documentation, and employee inquiries",
+        "Coordinate onboarding, engagement, and performance processes",
+        "Maintain accurate people data and produce HR insights"
+      ],
+      "required_skills": ["HR operations", "Employment policy", "Confidentiality", "Process management", "Communication"],
+      "tech_stack": ["HRIS", "ATS", "Payroll systems", "Excel or Sheets", "Survey tools"],
+      "kpis": ["Onboarding completion", "Employee response time", "Data accuracy", "Retention", "Employee experience score"]
+    },
+    {
+      "id": "financial-analyst",
+      "title": "Financial Analyst",
+      "department": "Finance",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Prepare budgets, forecasts, and management reporting",
+        "Analyze variance, profitability, and business performance",
+        "Build financial models for planning and investment decisions",
+        "Present clear recommendations to business leaders"
+      ],
+      "required_skills": ["Financial modeling", "Accounting fundamentals", "Forecasting", "Variance analysis", "Business partnering"],
+      "tech_stack": ["Excel", "SQL", "Power BI or Tableau", "ERP or FP&A platform"],
+      "kpis": ["Forecast accuracy", "Close/reporting timeliness", "Budget variance", "Decision impact", "Data quality"]
+    },
+    {
+      "id": "project-manager",
+      "title": "Project Manager",
+      "department": "Operations / Program Management",
+      "seniority_levels": ["Entry", "Mid", "Senior", "Lead", "Director"],
+      "core_responsibilities": [
+        "Plan scope, milestones, dependencies, risks, and resources",
+        "Coordinate cross-functional delivery and stakeholder communication",
+        "Track decisions, actions, budget, and delivery health",
+        "Drive continuous improvement and successful project closure"
+      ],
+      "required_skills": ["Planning", "Risk management", "Facilitation", "Communication", "Change management"],
+      "tech_stack": ["Jira or Asana", "Smartsheet or MS Project", "Confluence or Notion", "Reporting tools"],
+      "kpis": ["On-time delivery", "Budget variance", "Risk closure", "Stakeholder satisfaction", "Benefits realization"]
+    }
+  ]
+}

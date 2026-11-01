@@ -1,0 +1,219 @@
+{
+  "status": "OK",
+  "request_id": "mock-jsearch-req-20241013-001",
+  "parameters": {
+    "query": "Software Engineer",
+    "page": 1,
+    "num_pages": 1
+  },
+  "data": [
+    {
+      "job_id": "jsearch-live-001",
+      "employer_name": "Google",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+      "employer_website": "https://careers.google.com",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Senior Python Backend Engineer",
+      "job_apply_link": "https://www.linkedin.com/jobs/view/google-senior-python-backend-engineer",
+      "job_description": "Google is seeking an experienced Senior Python Backend Engineer to join our Core Services team. In this role, you will design, build, and deploy high-throughput microservices using Python, FastAPI, and Flask. You will collaborate with cross-functional teams to integrate PostgreSQL, Redis caching, and Docker containers into Kubernetes clusters on Google Cloud Platform (GCP). Key responsibilities include designing RESTful APIs, optimizing database queries, implementing CI/CD pipelines, and ensuring 99.99% service availability. Qualifications: 4+ years of backend development with Python, hands-on expertise in PostgreSQL, Docker, Git, Linux, and REST API design. Familiarity with cloud platforms (AWS, GCP) and message queues (Kafka, Celery) is highly desirable.",
+      "job_is_remote": true,
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_min_salary": 145000,
+      "job_max_salary": 195000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "4+ years of Python software development (FastAPI, Flask)",
+          "Proficiency in PostgreSQL, Redis, Docker, and Git",
+          "Experience with REST APIs, Linux, and CI/CD pipelines"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-002",
+      "employer_name": "Microsoft",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
+      "employer_website": "https://careers.microsoft.com",
+      "job_publisher": "Indeed",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Full Stack Software Engineer",
+      "job_apply_link": "https://www.indeed.com/viewjob?jk=microsoft-full-stack-software-engineer",
+      "job_description": "Microsoft Azure Developer Division is hiring a Full Stack Software Engineer. You will build user-facing enterprise web applications using modern JavaScript/TypeScript, React.js, and Node.js on the frontend, and Python, C#, or Java microservices on the backend. You will integrate Azure Cloud services, implement SQL and MongoDB data stores, and design responsive user interfaces using HTML5, CSS3, and Tailwind. Requirements: Bachelor's in Computer Science or equivalent, 3+ years full stack engineering, expertise in React, JavaScript, TypeScript, Node.js, REST API, Git, Docker, and relational databases (MySQL, PostgreSQL).",
+      "job_is_remote": true,
+      "job_city": "Hyderabad",
+      "job_state": "Telangana",
+      "job_country": "IN",
+      "job_min_salary": 135000,
+      "job_max_salary": 175000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Proficient in React, JavaScript, TypeScript, and Node.js",
+          "Solid backend skills with Python or REST APIs",
+          "Hands-on experience with SQL, Docker, Git, and HTML5/CSS3"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-003",
+      "employer_name": "Amazon Web Services",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+      "employer_website": "https://aws.amazon.com",
+      "job_publisher": "Glassdoor",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Cloud DevOps & Platform Engineer",
+      "job_apply_link": "https://www.glassdoor.com/job-listing/aws-cloud-devops-platform-engineer",
+      "job_description": "Amazon Web Services (AWS) is looking for a Cloud DevOps Engineer to scale cloud infrastructure across global regions. You will write infrastructure-as-code using Terraform, configure AWS services (EC2, S3, IAM, EKS, Lambda), and automate continuous delivery using Jenkins, GitLab CI, and GitHub Actions. You will orchestrate containerized workloads with Docker and Kubernetes, monitor production systems with Prometheus/Grafana, and write automation scripts in Python and Bash. Qualifications: Experience with AWS or Azure, Kubernetes, Docker, Terraform, CI/CD, Git, Linux system administration, and Python/Bash scripting.",
+      "job_is_remote": true,
+      "job_city": "Pune",
+      "job_state": "Maharashtra",
+      "job_country": "IN",
+      "job_min_salary": 140000,
+      "job_max_salary": 180000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Hands-on experience with AWS, EC2, S3, and IAM",
+          "Deep familiarity with Kubernetes, Docker, and Terraform",
+          "Strong CI/CD, Linux, Bash, Git, and Python automation skills"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-004",
+      "employer_name": "NVIDIA",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg",
+      "employer_website": "https://www.nvidia.com",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Machine Learning & AI Engineer",
+      "job_apply_link": "https://www.linkedin.com/jobs/view/nvidia-machine-learning-ai-engineer",
+      "job_description": "NVIDIA is looking for a passionate Machine Learning Engineer to develop cutting-edge generative AI and computer vision models. You will design, train, and optimize deep learning algorithms using PyTorch, TensorFlow, scikit-learn, and CUDA. You will process large datasets using Pandas, NumPy, and Apache Spark, and deploy inference pipelines on Triton Inference Server in Docker containers. Qualifications: Solid foundation in machine learning, NLP, deep learning, Python, NumPy, Pandas, Scikit-learn, PyTorch, Docker, Git, and mathematical modeling.",
+      "job_is_remote": false,
+      "job_city": "Chennai",
+      "job_state": "Tamil Nadu",
+      "job_country": "IN",
+      "job_min_salary": 155000,
+      "job_max_salary": 210000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Strong background in Machine Learning, Deep Learning, and NLP",
+          "Advanced Python proficiency with PyTorch, Scikit-learn, Pandas, and NumPy",
+          "Experience deploying models using Docker, Git, and Linux"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-005",
+      "employer_name": "Meta",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
+      "employer_website": "https://www.metacareers.com",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Data Scientist & Analytics Specialist",
+      "job_apply_link": "https://www.linkedin.com/jobs/view/meta-data-scientist-analytics-specialist",
+      "job_description": "Meta is seeking a Data Scientist to extract actionable insights from billions of user interactions. You will formulate product metrics, design A/B experiments, and build predictive statistical models using Python, R, SQL, and Scikit-learn. You will analyze structured and unstructured data using Pandas, NumPy, Matplotlib, and Tableau, and write complex SQL queries to power executive dashboards. Qualifications: Proficiency in SQL, Python, Pandas, NumPy, statistical modeling, machine learning, data visualization (Power BI, Tableau), and Git.",
+      "job_is_remote": true,
+      "job_city": "Gurugram",
+      "job_state": "Haryana",
+      "job_country": "IN",
+      "job_min_salary": 130000,
+      "job_max_salary": 170000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Advanced SQL query optimization and relational database knowledge",
+          "Python data science stack: Pandas, NumPy, Scikit-learn",
+          "Data visualization, A/B testing, and business analytics"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-006",
+      "employer_name": "Stripe",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg",
+      "employer_website": "https://stripe.com/jobs",
+      "job_publisher": "Indeed",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Frontend Software Engineer - React / UI",
+      "job_apply_link": "https://www.indeed.com/viewjob?jk=stripe-frontend-software-engineer-react",
+      "job_description": "Stripe is looking for a Frontend Software Engineer to craft elegant, high-conversion payment flows and developer dashboards. You will build responsive component architectures using React, TypeScript, HTML5, CSS3, Next.js, and modern CSS modules. You will collaborate closely with product designers to ensure accessibility, cross-browser compatibility, and sub-100ms load times. Requirements: 3+ years engineering modern web applications with React, TypeScript, JavaScript, HTML5, CSS3, REST API integration, Jest testing, and Git.",
+      "job_is_remote": true,
+      "job_city": "Mumbai",
+      "job_state": "Maharashtra",
+      "job_country": "IN",
+      "job_min_salary": 135000,
+      "job_max_salary": 180000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Deep expertise in React.js, TypeScript, and modern JavaScript",
+          "Pixel-perfect UI development with HTML5, CSS3, and responsive design",
+          "RESTful API consumption, state management, and Git workflows"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-007",
+      "employer_name": "Uber",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png",
+      "employer_website": "https://www.uber.com/careers",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Backend Distributed Systems Engineer",
+      "job_apply_link": "https://www.linkedin.com/jobs/view/uber-backend-distributed-systems-engineer",
+      "job_description": "Uber Engineering is seeking a Backend Distributed Systems Engineer for our Real-Time Marketplace team. You will write concurrent microservices in Go, Java, and Python handling millions of geospatial events per second. You will implement distributed data stores using Apache Cassandra, Kafka, Redis, and MySQL, with Docker and Kubernetes deployment on Linux. Qualifications: Experience building distributed architectures, concurrency, REST APIs, gRPC, Docker, Linux, Git, and SQL/NoSQL databases.",
+      "job_is_remote": true,
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_min_salary": 150000,
+      "job_max_salary": 200000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Experience in high-throughput backend services (Go, Python, or Java)",
+          "Kafka, Redis, PostgreSQL/MySQL, Docker, and Linux",
+          "Distributed systems architecture and REST/gRPC API design"
+        ]
+      }
+    },
+    {
+      "job_id": "jsearch-live-008",
+      "employer_name": "Cloudflare",
+      "employer_logo": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg",
+      "employer_website": "https://www.cloudflare.com/careers",
+      "job_publisher": "Glassdoor",
+      "job_employment_type": "FULLTIME",
+      "job_title": "Cyber Security & Cloud Infrastructure Analyst",
+      "job_apply_link": "https://www.glassdoor.com/job-listing/cloudflare-cyber-security-infrastructure-analyst",
+      "job_description": "Cloudflare is hiring a Cyber Security & Cloud Infrastructure Analyst. You will monitor global edge networks, identify vulnerabilities, perform threat modeling, and implement security incident response workflows. You will automate threat intelligence parsing using Python, analyze network protocols (TCP/IP, DNS, TLS, HTTP), and secure cloud infrastructure across AWS and Kubernetes environments. Qualifications: Knowledge of cybersecurity principles, networking protocols, Linux administration, Python scripting, firewalls, and security monitoring tools (SIEM, Wireshark).",
+      "job_is_remote": true,
+      "job_city": "New Delhi",
+      "job_state": "Delhi",
+      "job_country": "IN",
+      "job_min_salary": 125000,
+      "job_max_salary": 165000,
+      "job_salary_currency": "USD",
+      "job_salary_period": "YEAR",
+      "job_highlights": {
+        "Qualifications": [
+          "Strong foundation in Cyber Security, threat analysis, and networking",
+          "Linux system administration, Python scripting, and Bash",
+          "Knowledge of AWS, Docker, firewalls, and vulnerability management"
+        ]
+      }
+    }
+  ]
+}
